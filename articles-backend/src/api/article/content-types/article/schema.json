@@ -22,6 +22,16 @@
     },
     "PublishedDate": {
       "type": "date"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -8,7 +8,7 @@ function ArticleDetails() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`http://localhost:1337/api/articles/${id}`)
+    fetch(`http://localhost:1337/api/articles/${id}?populate=img`)
       .then((res) => res.json())
       .then((data) => setArticle(data.data))
       .catch((err) => setError(err))
@@ -24,6 +24,12 @@ function ArticleDetails() {
       <p>Author: {article.Author}</p>
       <p>Published: {article.PublishedDate}</p>
       <p>{article.Content[0].children[0].text}</p>
+      {article.img && (
+        <img
+          src={`http://localhost:1337${article.img.url}`}
+          alt={article.Title}
+        />
+      )}
       <button onClick={() => navigate("/")}>Back</button>
     </div>
   );
